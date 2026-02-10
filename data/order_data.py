@@ -1,0 +1,26 @@
+ORDER_TEST_DATA = [
+    {
+        "button": "top",
+        "first_name": "Иван",
+        "last_name": "Иванов",
+        "address": "Москва, Тверская 1",
+        "metro": "Сокольники",
+        "phone": "+79990000001",
+        "date": "20.02.2026",
+        "rent_period": "сутки",
+        "color": "black",
+        "comment": "Позвоните за час",
+    },
+    {
+        "button": "bottom",
+        "first_name": "Анна",
+        "last_name": "Петрова",
+        "address": "Москва, Арбат 10",
+        "metro": "Черкизовская",
+        "phone": "+79990000002",
+        "date": "21.02.2026",
+        "rent_period": "двое суток",
+        "color": "grey",
+        "comment": "",
+    },
+]
