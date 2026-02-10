@@ -1,38 +1,13 @@
 import pytest
+import allure
 
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
+from data.order_data import ORDER_TEST_DATA
 
 
-order_data = [
-    {
-        "button": "top",
-        "first_name": "Иван",
-        "last_name": "Иванов",
-        "address": "Москва, Тверская 1",
-        "metro": "Любая",
-        "phone": "+79990000001",
-        "date": "20.02.2026",
-        "rent_period": "сутки",
-        "color": "black",
-        "comment": "Позвоните за час",
-    },
-    {
-        "button": "bottom",
-        "first_name": "Анна",
-        "last_name": "Петрова",
-        "address": "Москва, Арбат 10",
-        "metro": "Любая",
-        "phone": "+79990000002",
-        "date": "21.02.2026",
-        "rent_period": "сутки",
-        "color": "grey",
-        "comment": "",
-    },
-]
-
-
-@pytest.mark.parametrize("data", order_data)
+@allure.title("Успешное оформление заказа самоката ({data[button]} кнопка)")
+@pytest.mark.parametrize("data", ORDER_TEST_DATA)
 def test_success_order_flow(driver, data):
     main_page = MainPage(driver)
     order_page = OrderPage(driver)

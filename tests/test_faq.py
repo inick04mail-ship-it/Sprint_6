@@ -1,10 +1,9 @@
 import pytest
+import allure
 
 from pages.main_page import MainPage
 
 
-# Для вопроса с индексом N в тексте ответа
-# должен встретиться указанный фрагмент.
 faq_data = [
     (0, "Сутки — 400 рублей"),
     (1, "Пока что у нас так: один заказ — один самокат"),
@@ -17,6 +16,7 @@ faq_data = [
 ]
 
 
+@allure.title("Проверка текста ответа FAQ для вопроса №{index}")
 @pytest.mark.parametrize("index, expected_text", faq_data)
 def test_faq_answer_visible(driver, index, expected_text):
     main_page = MainPage(driver)

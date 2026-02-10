@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.support.ui import WebDriverWait
 
 from pages.main_page import MainPage
@@ -5,6 +6,7 @@ from pages.order_page import OrderPage
 from urls import BASE_URL
 
 
+@allure.title("Переход на главную страницу по логотипу Самоката со страницы заказа")
 def test_logo_scooter_from_order_returns_to_main(driver):
     main_page = MainPage(driver)
     order_page = OrderPage(driver)
@@ -18,6 +20,7 @@ def test_logo_scooter_from_order_returns_to_main(driver):
     assert current_url.startswith(BASE_URL)
 
 
+@allure.title("Открытие Dzen/Яндекс в новой вкладке по клику на логотип Яндекса")
 def test_logo_yandex_opens_dzen_or_new_tab(driver):
     main_page = MainPage(driver)
     order_page = OrderPage(driver)
@@ -25,7 +28,6 @@ def test_logo_yandex_opens_dzen_or_new_tab(driver):
     main_page.open_main_page()
     main_page.click_order_top()
 
-    # Проверяем, что href у логотипа ведёт на yandex.ru
     href = main_page.get_yandex_logo_href()
     assert "yandex.ru" in href
 
@@ -34,7 +36,6 @@ def test_logo_yandex_opens_dzen_or_new_tab(driver):
 
     main_page.click_yandex_logo()
 
-    # Ждём появления нового окна (их должно стать больше 1)
     WebDriverWait(driver, 10).until(
         lambda d: len(d.window_handles) > 1
     )
